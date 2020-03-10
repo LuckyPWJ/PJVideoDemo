@@ -51,20 +51,8 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyX-mU-Uyr" customClass="PJCameraTypeView">
                                 <rect key="frame" x="0.0" y="752" width="414" height="60"/>
-                                <subviews>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zio-BF-Rsz">
-                                        <rect key="frame" x="87" y="15" width="240" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="WX3-yf-JdQ"/>
-                                            <constraint firstAttribute="height" constant="30" id="xwn-Gk-mef"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="zio-BF-Rsz" firstAttribute="centerX" secondItem="PyX-mU-Uyr" secondAttribute="centerX" id="C1C-KF-Ndj"/>
-                                    <constraint firstItem="zio-BF-Rsz" firstAttribute="centerY" secondItem="PyX-mU-Uyr" secondAttribute="centerY" id="OHP-ZO-w93"/>
                                     <constraint firstAttribute="height" constant="60" id="qJI-SU-od5"/>
                                 </constraints>
                             </view>
