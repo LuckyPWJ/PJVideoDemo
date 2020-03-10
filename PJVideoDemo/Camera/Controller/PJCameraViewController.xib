@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="INa-xT-kTD" customClass="PJCameraViewController">
+            <view key="view" contentMode="scaleToFill" id="zDn-e7-XkC">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJC-H8-YZz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="347"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5U-IL-cLe">
+                        <rect key="frame" x="0.0" y="37" width="414" height="822"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTB-LR-Cm5">
+                                <rect key="frame" x="23" y="15" width="38" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="GGF-M7-8f5"/>
+                                    <constraint firstAttribute="height" constant="40" id="Jbh-Wr-kfC"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="pj_camera_close.png"/>
+                                <connections>
+                                    <action selector="closeVCAction:" destination="INa-xT-kTD" eventType="touchUpInside" id="zXe-62-IPe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05G-AU-NM5">
+                                <rect key="frame" x="343" y="15" width="38" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="08I-Wb-tnm"/>
+                                    <constraint firstAttribute="width" constant="38" id="bc3-nE-gbw"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="pj_camera_reversal.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-t2-0k6">
+                                <rect key="frame" x="337" y="91" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="dEm-Yk-W3P"/>
+                                    <constraint firstAttribute="height" constant="50" id="fED-89-1DZ"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="pj_camera_filter.png"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyX-mU-Uyr" customClass="PJCameraTypeView">
+                                <rect key="frame" x="0.0" y="752" width="414" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="qJI-SU-od5"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Dv-gJ-JSk">
+                                <rect key="frame" x="0.0" y="632" width="414" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIx-Xg-hJv" customClass="PJCameraButton">
+                                        <rect key="frame" x="172" y="25" width="70" height="70"/>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="7SB-TQ-UND"/>
+                                            <constraint firstAttribute="width" constant="70" id="bWA-7b-0Vl"/>
+                                        </constraints>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="1xy-7B-QRW"/>
+                                    <constraint firstItem="uIx-Xg-hJv" firstAttribute="centerX" secondItem="1Dv-gJ-JSk" secondAttribute="centerX" id="B0G-Zv-bnO"/>
+                                    <constraint firstItem="uIx-Xg-hJv" firstAttribute="centerY" secondItem="1Dv-gJ-JSk" secondAttribute="centerY" id="YRV-hC-YX7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1Dv-gJ-JSk" secondAttribute="trailing" id="8ay-mF-ToD"/>
+                            <constraint firstAttribute="trailing" secondItem="05G-AU-NM5" secondAttribute="trailing" constant="33" id="FnB-VD-5JS"/>
+                            <constraint firstAttribute="bottom" secondItem="PyX-mU-Uyr" secondAttribute="bottom" constant="10" id="HRv-Pp-NKh"/>
+                            <constraint firstItem="k1f-t2-0k6" firstAttribute="centerX" secondItem="05G-AU-NM5" secondAttribute="centerX" id="OmG-TJ-Chg"/>
+                            <constraint firstAttribute="trailing" secondItem="PyX-mU-Uyr" secondAttribute="trailing" id="PYv-w2-XaL"/>
+                            <constraint firstItem="05G-AU-NM5" firstAttribute="top" secondItem="W5U-IL-cLe" secondAttribute="top" constant="15" id="UtF-BA-LsM"/>
+                            <constraint firstItem="PyX-mU-Uyr" firstAttribute="top" secondItem="1Dv-gJ-JSk" secondAttribute="bottom" id="VBt-zR-WUi"/>
+                            <constraint firstItem="ZTB-LR-Cm5" firstAttribute="leading" secondItem="W5U-IL-cLe" secondAttribute="leading" constant="23" id="Vrb-Y9-R30"/>
+                            <constraint firstItem="ZTB-LR-Cm5" firstAttribute="top" secondItem="W5U-IL-cLe" secondAttribute="top" constant="15" id="of0-Fd-hKh"/>
+                            <constraint firstItem="PyX-mU-Uyr" firstAttribute="leading" secondItem="W5U-IL-cLe" secondAttribute="leading" id="pGa-VC-G87"/>
+                            <constraint firstItem="k1f-t2-0k6" firstAttribute="top" secondItem="05G-AU-NM5" secondAttribute="bottom" constant="36" id="qVy-sn-gxP"/>
+                            <constraint firstItem="1Dv-gJ-JSk" firstAttribute="leading" secondItem="W5U-IL-cLe" secondAttribute="leading" id="skj-cp-Hv1"/>
+                            <constraint firstItem="05G-AU-NM5" firstAttribute="centerY" secondItem="ZTB-LR-Cm5" secondAttribute="centerY" id="v9I-KE-fX7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="raH-oe-ORH" firstAttribute="bottom" secondItem="W5U-IL-cLe" secondAttribute="bottom" constant="3" id="ZmX-Qx-TO0"/>
+                    <constraint firstItem="W5U-IL-cLe" firstAttribute="leading" secondItem="raH-oe-ORH" secondAttribute="leading" id="aim-NK-dFN"/>
+                    <constraint firstItem="W5U-IL-cLe" firstAttribute="trailing" secondItem="raH-oe-ORH" secondAttribute="trailing" id="q1u-Xz-MJQ"/>
+                    <constraint firstItem="W5U-IL-cLe" firstAttribute="top" secondItem="zDn-e7-XkC" secondAttribute="top" constant="37" id="tWh-MM-Qol"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="raH-oe-ORH"/>
+            </view>
+            <point key="canvasLocation" x="331.8840579710145" y="-332.14285714285711"/>
+        </viewController>
+    </objects>
+    <resources>
+        <image name="pj_camera_close.png" width="200" height="200"/>
+        <image name="pj_camera_filter.png" width="200" height="200"/>
+        <image name="pj_camera_reversal.png" width="200" height="200"/>
+    </resources>
+</document>
