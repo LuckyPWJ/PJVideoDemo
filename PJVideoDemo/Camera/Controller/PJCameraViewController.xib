@@ -103,6 +103,10 @@
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="raH-oe-ORH"/>
             </view>
+            <connections>
+                <outlet property="cameraButton" destination="uIx-Xg-hJv" id="fm1-ol-5Sh"/>
+                <outlet property="cameraTypeView" destination="PyX-mU-Uyr" id="kUB-hT-AZ5"/>
+            </connections>
             <point key="canvasLocation" x="331.8840579710145" y="-332.14285714285711"/>
         </viewController>
     </objects>

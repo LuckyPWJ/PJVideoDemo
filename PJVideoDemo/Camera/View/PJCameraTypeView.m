@@ -9,12 +9,16 @@
 #import "PJCameraTypeView.h"
 #import "UIView+PJFrame.h"
 
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+
 @interface PJCameraTypeView(){
     UIView *_backgroundView;
     CGPoint _prePoint;
     CGPoint _startPoint;
     CGFloat _buttonWidth;
     NSArray *_titles;
+    CGAffineTransform _transform;
+    NSUInteger _currentIndex;
 }
 
 @end
@@ -38,6 +42,8 @@
     
     [self setUpModelButton];
     
+    [self setUpDotView];
+    
     UIPanGestureRecognizer * panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesAction:)];
     [self addGestureRecognizer:panGes];
 }
@@ -47,11 +53,12 @@
     CGFloat backgroundViewWidth = _buttonWidth * [self titleCount];
     UIView * backgroundView     = [UIView new];
     backgroundView.frameWidth   = backgroundViewWidth;
-    backgroundView.frameHeight  = self.frameHeight;
+    backgroundView.frameHeight  = self.frameHeight - 5;
     backgroundView.frameY       = 0;
-    backgroundView.frameX       = ([UIScreen mainScreen].bounds.size.width - backgroundViewWidth) / 2 + _buttonWidth;
+    backgroundView.frameX       = (kScreenWidth - backgroundViewWidth) / 2 + _buttonWidth;
     [self addSubview:backgroundView];
     _backgroundView = backgroundView;
+    _transform      = _backgroundView.transform;
 }
 
 -(void)setUpModelButton
@@ -61,6 +68,7 @@
     
     for (NSUInteger i = 0; i < [self titleCount]; i++) {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.tag        = 10 + i;
         button.frame      = CGRectMake(i * buttonWidth, 0, buttonWidth, buttonHeight);
         [button setTitle:_titles[i] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -69,9 +77,23 @@
     }
 }
 
+-(void)setUpDotView
+{
+    CGFloat dotWidth = 5.f;
+    CALayer * dotLayer = [CALayer layer];
+    dotLayer.backgroundColor = [UIColor whiteColor].CGColor;
+    dotLayer.frame           = CGRectMake((kScreenWidth - dotWidth) / 2 ,_backgroundView.frameHeight, dotWidth, dotWidth);
+    dotLayer.cornerRadius    = dotWidth / 2;
+    [self.layer addSublayer:dotLayer];
+}
+
 -(void)typeButtonAction:(id)sender
 {
-    
+    UIButton * btn = (UIButton *)sender;
+    NSInteger i = btn.tag - 10;
+    _backgroundView.transform = CGAffineTransformTranslate(_transform, - i * _buttonWidth, 0);
+    [self respondToDelegateWithIndex:i];
+
 }
 
 -(void)panGesAction:(UIPanGestureRecognizer *)ges
@@ -90,20 +112,32 @@
     _prePoint = touchPoint;
    
     CGFloat transformX = _backgroundView.transform.tx;
-    NSInteger n = (NSInteger)transformX / (_buttonWidth / 2);
 
-    if (ges.state == UIGestureRecognizerStateEnded){
+    if (ges.state == UIGestureRecognizerStateEnded) {
         NSInteger titleCount = [self titleCount];
+        NSInteger n = (NSInteger)transformX / (_buttonWidth / 2);
+        CGAffineTransform transform;
         if (n >= 0) {
-               _backgroundView.transform = CGAffineTransformTranslate(_backgroundView.transform, -transformX, 0);
-          }else if (n < -(titleCount - 1)){
-                _backgroundView.transform = CGAffineTransformTranslate(_backgroundView.transform, -transformX - _buttonWidth * (titleCount - 1), 0);
-          }else{
-              //判断滑动方向，进行处理
-              NSInteger direction = touchPoint.x - _startPoint.x;
-              NSInteger m = direction > 0 ? n + 1 : n;
-              _backgroundView.transform = CGAffineTransformTranslate(_backgroundView.transform, -transformX + _buttonWidth * m , 0);
-          }
+            transform = CGAffineTransformTranslate(_transform,0, 0);
+            _currentIndex = 0;
+        }else if (n <= -titleCount) {
+            transform = CGAffineTransformTranslate(_transform,-_buttonWidth * (titleCount - 1), 0);
+            _currentIndex = 2;
+        }else{
+            NSInteger direction = touchPoint.x - _startPoint.x;
+            NSInteger m = direction > 0 ? n + 1 : n;
+            transform = CGAffineTransformTranslate(_transform,_buttonWidth * m, 0);
+            _currentIndex = labs(m);
+        }
+        _backgroundView.transform = transform;
+        [self respondToDelegateWithIndex:_currentIndex];
+    }
+}
+
+-(void)respondToDelegateWithIndex:(NSInteger)index
+{
+    if ([self.delegate respondsToSelector:@selector(cameraTypeViewSelectIndex:)]) {
+        [self.delegate cameraTypeViewSelectIndex:index];
     }
 }
 

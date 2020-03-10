@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol PJCameraTypeViewDelegate <NSObject>
+
+-(void)cameraTypeViewSelectIndex:(NSInteger)index;
+
+@end
+
 @interface PJCameraTypeView : UIView
+
+@property(nonatomic, weak) id<PJCameraTypeViewDelegate> delegate;
 
 @end
 
