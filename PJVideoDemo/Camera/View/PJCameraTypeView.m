@@ -30,14 +30,19 @@
 
 -(void)setUpView
 {
+    NSArray * titles = @[@"拍照",@"拍15秒",@"拍30秒"];
+    _modelCount = titles.count;
     _buttonWidth = 80;
-    
+
+    CGFloat backgroundViewWidth = _buttonWidth * titles.count;
     UIView * backgroundView = [UIView new];
-    backgroundView.frame = CGRectMake(150, 0, 240, self.frameHeight);
+    backgroundView.frameWidth  = backgroundViewWidth;
+    backgroundView.frameHeight = self.frameHeight;
+    backgroundView.frameY      = 0;
+    backgroundView.frameX      = ([UIScreen mainScreen].bounds.size.width - backgroundViewWidth) / 2 + _buttonWidth;
     [self addSubview:backgroundView];
     _backgroundView = backgroundView;
     
-    NSArray * titles     = @[@"拍照",@"拍15秒",@"拍30秒"];
     CGFloat buttonWidth  = _buttonWidth;
     CGFloat buttonHeight = _backgroundView.frameHeight;
   
@@ -50,7 +55,6 @@
         [_backgroundView addSubview:button];
     }
     
-    _modelCount = titles.count;
     
     UIPanGestureRecognizer * panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesAction:)];
     [self addGestureRecognizer:panGes];
